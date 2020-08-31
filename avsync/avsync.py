@@ -9,7 +9,7 @@ from scipy import signal
 
 audio_fn = "blackbird.wav"
 video_fn = "blackbird.mp4"
-out_fn = None #"out.mp4"
+out_fn = None  # "out.mp4"
 
 
 def calculate_time_offset(a, b, fs):
@@ -37,6 +37,7 @@ def calculate_time_offset(a, b, fs):
     max_corr = corr.max()
     return offset / fs, max_corr
 
+
 def AVsync(audio_fn, video_fn, offset=None, verbose=False):
     audio = AudioFileClip(audio_fn)
     video = VideoFileClip(video_fn)
@@ -54,8 +55,9 @@ def AVsync(audio_fn, video_fn, offset=None, verbose=False):
         video_out = video.subclip(-offset).set_audio(audio)
 
     return video_out
-if __name__ == "__main__":
 
+
+if __name__ == "__main__":
 
     video_out = AVsync(audio_fn, video_fn, verbose=True)
     if out_fn:
